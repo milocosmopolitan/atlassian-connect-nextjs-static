@@ -1,0 +1,38 @@
+{
+    "key": "atlassian-jira-issue-filter",
+    "name": "Filter Linter",
+    "description": "This is just a tribute...",
+    "vendor": {
+        "name": "Milo Kang",
+        "url": "milowebmaster@gmail.com"
+    },
+    "baseUrl": "https://omiologic.ngrok.io/",
+    "links": {
+        "self": "https://omiologic.ngrok.io/atlassian-connect.json",
+        "homepage": "https://omiologic.ngrok.io/atlassian-connect.json"
+    },
+    "authentication": {
+        "type": "none"
+    },
+    "lifecycle": {},
+    "scopes": [
+        "READ", "WRITE"
+    ],
+    "modules": {
+        "jiraDashboardItems": [
+            {
+                "name" : {
+                    "value" : "Hello Dashboad Gadget JIRA Cloud RC"
+                },
+                "url" : "/hello-world",
+                "key" : "hello-world",
+                "description" : {
+                    "value" : "Hello world gadget"
+                },
+
+                "thumbnailUrl": "/thumbnail.png",
+                "configurable" : true
+            }
+        ]
+    }
+}
