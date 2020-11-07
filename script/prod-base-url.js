@@ -9,11 +9,11 @@ try {
 } catch (error) {
   console.error(error);
 }
-parsedConf.baseUrl = 'http://jira-cloud-filter-linter.s3-website.us-east-2.amazonaws.com';
+parsedConf.baseUrl = 'https://jira-cloud-filter-linter.s3-website.us-east-2.amazonaws.com';
 
 parsedConf.links = {
-  self: "http://jira-cloud-filter-linter.s3-website.us-east-2.amazonaws.com/atlassian-connect.json",
-  homepage: "http://jira-cloud-filter-linter.s3-website.us-east-2.amazonaws.com/atlassian-connect.json"
+  self: "https://jira-cloud-filter-linter.s3-website.us-east-2.amazonaws.com/atlassian-connect.json",
+  homepage: "https://jira-cloud-filter-linter.s3-website.us-east-2.amazonaws.com/atlassian-connect.json"
 }
 
 fs.writeFileSync(acConfPath, JSON.stringify(parsedConf, null, 2));
