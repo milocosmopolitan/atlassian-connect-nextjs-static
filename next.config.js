@@ -3,6 +3,7 @@ const path = require('path');
 const  JsonPostProcessPlugin = require('json-post-process-webpack-plugin');
 module.exports = {
   target: 'serverless',
+  trailingSlash: true,
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     
     // const envFilePath = dev ? './atlassian-connect.dev.json' : './atlassian-connect.prod.json';
