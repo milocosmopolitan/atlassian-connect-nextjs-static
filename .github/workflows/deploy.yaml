@@ -21,12 +21,19 @@ jobs:
       - run: node ./script/prod-base-url.js
 
       - name: Deploy to AWS S3
-        uses: jakejarvis/s3-sync-action@master
-        with:
-          args: --acl public-read --follow-symlinks --delete
-        env:
-          AWS_S3_BUCKET: jira-cloud-filter-linter
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'us-east-2'
-          SOURCE_DIR: 'out'
+      - run: apt-get update && apt-get install -y python-dev
+      - run: curl -O https://bootstrap.pypa.io/get-pip.py
+      - run: python get-pip.py
+      - run: pip install awscli
+      - run: aws s3 cp --recursive --acl public-read ./out/ s3://jira-cloud-filter-linter/
+      - run: aws cloudfront create-invalidation --distribution-id E2X6NEZM0C6O20 --paths "/*"
+            
+        # uses: jakejarvis/s3-sync-action@master
+        # with:
+        #   args: --acl public-read --follow-symlinks --delete
+        # env:
+        #   AWS_S3_BUCKET: jira-cloud-filter-linter
+        #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        #   AWS_REGION: 'us-east-2'
+        #   SOURCE_DIR: 'out'
